@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="context" prefHeight="384.0" prefWidth="588.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devops.edumanage.controller.SignupFormController">
+   <children>
+      <TextField fx:id="txtFirstName" layoutX="286.0" layoutY="84.0" prefHeight="40.0" prefWidth="131.0" promptText="First Name" />
+      <TextField fx:id="txtEmail" layoutX="286.0" layoutY="134.0" prefHeight="40.0" prefWidth="279.0" promptText="Email" />
+      <Label layoutX="482.0" layoutY="26.0" text="Sign up" textFill="#140bbc">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Separator layoutX="286.0" layoutY="61.0" prefHeight="7.0" prefWidth="279.0" />
+      <Button layoutX="286.0" layoutY="243.0" mnemonicParsing="false" onAction="#signupOnAction" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #006bf7;" text="Sign up" textFill="#f7f6f6">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="286.0" layoutY="319.0" mnemonicParsing="false" onAction="#alreadyHaveAnAccOnAction" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #0d0d0d;" text="Already have an account" textFill="#fafafa">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="406.0" layoutY="292.0" text="- OR -" textFill="#0c2dd1">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtLastName" layoutX="433.0" layoutY="84.0" prefHeight="40.0" prefWidth="131.0" promptText="Last Name" />
+      <TextField fx:id="txtPassword" layoutX="286.0" layoutY="186.0" prefHeight="40.0" prefWidth="279.0" promptText="Password" />
+      <ImageView fitHeight="384.0" fitWidth="263.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/2150904762.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

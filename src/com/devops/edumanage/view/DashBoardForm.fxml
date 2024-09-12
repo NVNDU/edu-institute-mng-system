@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="context" prefHeight="435.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devops.edumanage.controller.DashBoardFormController">
+   <children>
+      <Label layoutX="23.0" layoutY="24.0" text="Dashboard">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <Separator layoutX="23.0" layoutY="72.0" prefHeight="3.0" prefWidth="729.0" />
+      <Button layoutX="23.0" layoutY="85.0" mnemonicParsing="false" onAction="#openStudentFormOnAction" prefHeight="167.0" prefWidth="169.0" style="-fx-background-color: #2eabd1;" text="Student" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="211.0" layoutY="85.0" mnemonicParsing="false" prefHeight="167.0" prefWidth="169.0" style="-fx-background-color: #313436;" text="Programs" textFill="#f7f4f4">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="397.0" layoutY="85.0" mnemonicParsing="false" prefHeight="167.0" prefWidth="169.0" style="-fx-background-color: #c92e46;" text="intakes" textFill="#f7f5f5">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="583.0" layoutY="85.0" mnemonicParsing="false" prefHeight="167.0" prefWidth="169.0" style="-fx-background-color: #cf8729;" text="Teachers" textFill="#f4eeee">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="22.0" layoutY="268.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="730.0" style="-fx-background-color: #2f9104;" text="Registration" textFill="#f4eeee">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="23.0" layoutY="394.0" prefHeight="26.0" prefWidth="135.0" text="From - NVNDU">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" layoutX="551.0" layoutY="33.0" text="2024-19-12">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" layoutX="668.0" layoutY="33.0" text="14:00:20">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="654.0" layoutY="30.0" orientation="VERTICAL" prefHeight="34.0" prefWidth="3.0" />
+      <Button layoutX="622.0" layoutY="376.0" mnemonicParsing="false" onAction="#logoutOnAction" prefHeight="46.0" prefWidth="135.0" style="-fx-background-color: #0c0d0c;" text="Logout" textFill="#efefef">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
