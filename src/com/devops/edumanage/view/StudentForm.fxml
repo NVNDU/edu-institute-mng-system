@@ -65,7 +65,7 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <Button layoutX="547.0" layoutY="125.0" mnemonicParsing="false" onAction="#saveStudentOnAction" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: #2241c9;" text="Save Student" textAlignment="CENTER" textFill="#efefef">
+      <Button fx:id="btn" layoutX="547.0" layoutY="125.0" mnemonicParsing="false" onAction="#saveStudentOnAction" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: #2241c9;" text="Save Student" textAlignment="CENTER" textFill="#efefef">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
