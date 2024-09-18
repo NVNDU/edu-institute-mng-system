@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.sql.*;
 import java.util.Optional;
 
 import static com.devops.edumanage.db.Database.userTable;
@@ -37,18 +38,33 @@ public class LoginFormController {
 //            }
 //        }
 
-        Optional<User> selectedUser = userTable.stream().filter(e -> e.getEmail().equals(email)).findFirst();
-
-        if (selectedUser.isPresent()){
-            if (new PasswordManager().checkPassword(pwd,selectedUser.get().getPassword())){//selectedUser.get().getPassword().equals(pwd)
-                System.out.println(selectedUser.get().toString());
-                setUi("DashBoardForm");
-            }else{
-                new Alert(Alert.AlertType.WARNING,("Wrong password")).show();
+        try{
+            User selectedUser = login(email);
+            if (null != selectedUser){
+                if (new PasswordManager().checkPassword(pwd,selectedUser.getPassword())){//selectedUser.get().getPassword().equals(pwd)
+                    System.out.println(selectedUser.toString());
+                    setUi("DashBoardForm");
+                }else{
+                    new Alert(Alert.AlertType.WARNING,("Wrong password")).show();
+                }
+            } else{
+                new Alert(Alert.AlertType.WARNING,String.format("user not found (%s)",email)).show();
             }
-        }else{
-            new Alert(Alert.AlertType.WARNING,String.format("user not found (%s)",email)).show();
+        }catch (ClassNotFoundException | SQLException e){
+            new Alert(Alert.AlertType.WARNING,e.toString()).show();
         }
+//        Optional<User> selectedUser = userTable.stream().filter(e -> e.getEmail().equals(email)).findFirst();
+//
+//        if (selectedUser.isPresent()){
+//            if (new PasswordManager().checkPassword(pwd,selectedUser.get().getPassword())){//selectedUser.get().getPassword().equals(pwd)
+//                System.out.println(selectedUser.get().toString());
+//                setUi("DashBoardForm");
+//            }else{
+//                new Alert(Alert.AlertType.WARNING,("Wrong password")).show();
+//            }
+//        }else{
+//            new Alert(Alert.AlertType.WARNING,String.format("user not found (%s)",email)).show();
+//        }
 
     }
 
@@ -64,5 +80,25 @@ public class LoginFormController {
         Stage stage = (Stage) context.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/"+location+".fxml"))));
         stage.centerOnScreen();
+    }
+
+    private User login(String email) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection =
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/lms_3","root","1234");
+        String sql = "SELECT * FROM user_table WHERE email='"+email+"'";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);// SELECT
+        if (resultSet.next()){
+            User user = new User(
+                    resultSet.getString("first_name"),
+                    resultSet.getString("last_name"),
+                    resultSet.getString("email"),
+                    resultSet.getString(4)
+            );
+            System.out.println(user);
+            return user;
+        }
+        return null;
     }
 }
