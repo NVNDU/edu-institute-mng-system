@@ -80,7 +80,7 @@ public class SignupFormController {
         statement.setString(3, user.getLastName());
         statement.setString(4, user.getPassword());
         //set sql in to statement and execute
-        return statement.executeUpdate(sql) > 0; //INSERT , UPDATE, DELETE
+        return statement.executeUpdate() > 0; //INSERT , UPDATE, DELETE
 //        return rowCount > 0;
     }
 }
