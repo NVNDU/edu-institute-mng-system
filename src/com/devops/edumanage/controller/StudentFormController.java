@@ -1,6 +1,7 @@
 package com.devops.edumanage.controller;
 
 import com.devops.edumanage.db.Database;
+import com.devops.edumanage.db.DbConnection;
 import com.devops.edumanage.model.Student;
 import com.devops.edumanage.view.tm.StudentTm;
 import javafx.collections.FXCollections;
@@ -181,8 +182,8 @@ public class StudentFormController {
     }
 
     private boolean saveStudent(Student student) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/lms_3","root","1234");
+        Connection connection = DbConnection.getInstance().getConnection();
+        System.out.println(connection);
         String sql = "INSERT INTO student_table values(?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,student.getStdId());
@@ -206,8 +207,8 @@ public class StudentFormController {
 
     private List<Student> searchStudents(String text) throws ClassNotFoundException, SQLException {
         text = "%" + text + "%";
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/lms_3","root","1234");
+        Connection connection = DbConnection.getInstance().getConnection();
+        System.out.println(connection);
         String sql = "SELECT * FROM student_table WHERE full_name LIKE ? OR address LIKE ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,text);
@@ -228,8 +229,8 @@ public class StudentFormController {
     }
 
     private boolean deleteStudent(String id) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/lms_3","root","1234");
+        Connection connection = DbConnection.getInstance().getConnection();
+        System.out.println(connection);
         String sql = "DELETE FROM student_table WHERE student_id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, id);
